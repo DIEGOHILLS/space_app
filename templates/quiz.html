@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}Space Quiz - Space Explorer{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">Space Knowledge Quiz</h1>
+        <p class="page-subtitle">Test your knowledge about space and the cosmos!</p>
+    </div>
+</section>
+
+<section class="quiz-section">
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-start" id="quiz-start">
+                <div class="quiz-intro">
+                    <div class="quiz-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h2>Ready for the Challenge?</h2>
+                    <p>Test your knowledge with 5 questions about space and our solar system. Each correct answer earns you points toward becoming a space expert!</p>
+                    <div class="quiz-info">
+                        <div class="info-item">
+                            <i class="fas fa-questions"></i>
+                            <span>5 Questions</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>No Time Limit</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Instant Results</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-large" id="start-quiz-btn">
+                        <i class="fas fa-play"></i>
+                        Start Quiz
+                    </button>
+                </div>
+            </div>
+
+            <div class="quiz-progress" id="quiz-progress" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text" id="progress-text">Question 1 of 5</span>
+            </div>
+
+            <div class="quiz-content" id="quiz-content" style="display: none;">
+                <div class="question-container">
+                    <h3 class="question-text" id="question-text"></h3>
+                    <div class="options-container" id="options-container">
+                        <!-- Options will be dynamically loaded -->
+                    </div>
+                    <div class="quiz-navigation">
+                        <button class="btn btn-secondary" id="prev-btn" style="display: none;">
+                            <i class="fas fa-arrow-left"></i>
+                            Previous
+                        </button>
+                        <button class="btn btn-primary" id="next-btn" disabled>
+                            Next
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="btn btn-success" id="submit-btn" style="display: none;">
+                            <i class="fas fa-check"></i>
+                            Submit Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-results" id="quiz-results" style="display: none;">
+                <div class="results-container">
+                    <div class="results-icon" id="results-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h2 class="results-title" id="results-title">Great Job!</h2>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <div class="score-number" id="score-number">0</div>
+                            <div class="score-total">/ 5</div>
+                        </div>
+                        <div class="percentage" id="percentage">0%</div>
+                    </div>
+                    <p class="results-message" id="results-message"></p>
+                    <div class="results-actions">
+                        <button class="btn btn-primary" id="retake-quiz-btn">
+                            <i class="fas fa-redo"></i>
+                            Retake Quiz
+                        </button>
+                        <a href="{{ url_for('planets') }}" class="btn btn-secondary">
+                            <i class="fas fa-globe"></i>
+                            Explore Planets
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Loading questions...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="quiz-tips">
+    <div class="container">
+        <h3>Quiz Tips</h3>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <i class="fas fa-lightbulb"></i>
+                <h4>Take Your Time</h4>
+                <p>There's no time limit, so think carefully about each question.</p>
+            </div>
+            <div class="tip-card">
+                <i class="fas fa-book"></i>
+                <h4>Learn as You Go</h4>
+                <p>Each question is an opportunity to learn something new about space.</p>
+            </div>
+            <div class="tip-card">
+                <i class="fas fa-sync"></i>
+                <h4>Practice Makes Perfect</h4>
+                <p>You can retake the quiz as many times as you want to improve your score.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}

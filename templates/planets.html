@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+
+{% block title %}Planets - Space Explorer{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">Solar System Planets</h1>
+        <p class="page-subtitle">Explore the fascinating worlds in our cosmic neighborhood</p>
+    </div>
+</section>
+
+<section class="solar-system">
+    <div class="container">
+        <div class="solar-system-visual">
+            <div class="sun">
+                <div class="sun-core"></div>
+            </div>
+            <div class="orbit orbit-1">
+                <div class="planet-orbit mercury" data-planet="mercury"></div>
+            </div>
+            <div class="orbit orbit-2">
+                <div class="planet-orbit venus" data-planet="venus"></div>
+            </div>
+            <div class="orbit orbit-3">
+                <div class="planet-orbit earth" data-planet="earth"></div>
+            </div>
+            <div class="orbit orbit-4">
+                <div class="planet-orbit mars" data-planet="mars"></div>
+            </div>
+            <div class="orbit orbit-5">
+                <div class="planet-orbit jupiter" data-planet="jupiter"></div>
+            </div>
+            <div class="orbit orbit-6">
+                <div class="planet-orbit saturn" data-planet="saturn">
+                    <div class="saturn-rings"></div>
+                </div>
+            </div>
+            <div class="orbit orbit-7">
+                <div class="planet-orbit uranus" data-planet="uranus"></div>
+            </div>
+            <div class="orbit orbit-8">
+                <div class="planet-orbit neptune" data-planet="neptune"></div>
+            </div>
+        </div>
+        
+        <div class="planet-controls">
+            <button class="control-btn active" data-planet="all">View All</button>
+            <button class="control-btn" data-planet="mercury">Mercury</button>
+            <button class="control-btn" data-planet="venus">Venus</button>
+            <button class="control-btn" data-planet="earth">Earth</button>
+            <button class="control-btn" data-planet="mars">Mars</button>
+            <button class="control-btn" data-planet="jupiter">Jupiter</button>
+            <button class="control-btn" data-planet="saturn">Saturn</button>
+            <button class="control-btn" data-planet="uranus">Uranus</button>
+            <button class="control-btn" data-planet="neptune">Neptune</button>
+        </div>
+    </div>
+</section>
+
+<section class="planet-info">
+    <div class="container">
+        <div class="planet-details" id="planet-details">
+            <div class="planet-card" id="default-info">
+                <h2>Our Solar System</h2>
+                <p>Click on any planet above or use the controls to learn more about each world in our solar system. Each planet has unique characteristics that make it fascinating to explore!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="planet-cards">
+    <div class="container">
+        <div class="cards-grid">
+            <div class="info-card" data-planet="mercury">
+                <div class="card-icon mercury-icon"></div>
+                <h3>Mercury</h3>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-value">58.6m</span>
+                        <span class="stat-label">km from Sun</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">88</span>
+                        <span class="stat-label">Earth days/year</span>
+                    </div>
+                </div>
+                <p>The closest planet to the Sun, Mercury experiences extreme temperature variations.</p>
+            </div>
+
+            <div class="info-card" data-planet="venus">
+                <div class="card-icon venus-icon"></div>
+                <h3>Venus</h3>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-value">108.2m</span>
+                        <span class="stat-label">km from Sun</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">225</span>
+                        <span class="stat-label">Earth days/year</span>
+                    </div>
+                </div>
+                <p>The hottest planet in our solar system with a thick, toxic atmosphere.</p>
+            </div>
+
+            <div class="info-card" data-planet="earth">
+                <div class="card-icon earth-icon"></div>
+                <h3>Earth</h3>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-value">149.6m</span>
+                        <span class="stat-label">km from Sun</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">365.25</span>
+                        <span class="stat-label">days/year</span>
+                    </div>
+                </div>
+                <p>Our home planet, the only known world with life in the universe.</p>
+            </div>
+
+            <div class="info-card" data-planet="mars">
+                <div class="card-icon mars-icon"></div>
+                <h3>Mars</h3>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-value">227.9m</span>
+                        <span class="stat-label">km from Sun</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">687</span>
+                        <span class="stat-label">Earth days/year</span>
+                    </div>
+                </div>
+                <p>The Red Planet, a cold desert world with the largest volcano in the solar system.</p>
+            </div>
+
+            <div class="info-card" data-planet="jupiter">
+                <div class="card-icon jupiter-icon"></div>
+                <h3>Jupiter</h3>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-value">778.5m</span>
+                        <span class="stat-label">km from Sun</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">12</span>
+                        <span class="stat-label">Earth years/year</span>
+                    </div>
+                </div>
+                <p>The largest planet, a gas giant with a Great Red Spot storm larger than Earth.</p>
+            </div>
+
+            <div class="info-card" data-planet="saturn">
+                <div class="card-icon saturn-icon"></div>
+                <h3>Saturn</h3>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-value">1.43b</span>
+                        <span class="stat-label">km from Sun</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">29</span>
+                        <span class="stat-label">Earth years/year</span>
+                    </div>
+                </div>
+                <p>Famous for its spectacular ring system made of ice and rock particles.</p>
+            </div>
+
+            <div class="info-card" data-planet="uranus">
+                <div class="card-icon uranus-icon"></div>
+                <h3>Uranus</h3>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-value">2.87b</span>
+                        <span class="stat-label">km from Sun</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">84</span>
+                        <span class="stat-label">Earth years/year</span>
+                    </div>
+                </div>
+                <p>An ice giant that rotates on its side, possibly due to an ancient collision.</p>
+            </div>
+
+            <div class="info-card" data-planet="neptune">
+                <div class="card-icon neptune-icon"></div>
+                <h3>Neptune</h3>
+                <div class="card-stats">
+                    <div class="stat">
+                        <span class="stat-value">4.5b</span>
+                        <span class="stat-label">km from Sun</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">165</span>
+                        <span class="stat-label">Earth years/year</span>
+                    </div>
+                </div>
+                <p>The windiest planet with speeds reaching up to 2,100 km/h.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/planets.js') }}"></script>
+{% endblock %}

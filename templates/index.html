@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Space Explorer{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <div class="stars"></div>
+        <div class="hero-text">
+            <h1 class="hero-title">Explore the Universe</h1>
+            <p class="hero-subtitle">Discover the wonders of space, learn about planets, and test your cosmic knowledge</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('planets') }}" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Explore Planets
+                </a>
+                <a href="{{ url_for('quiz') }}" class="btn btn-secondary">
+                    <i class="fas fa-brain"></i>
+                    Take Quiz
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="planet earth"></div>
+            <div class="planet mars"></div>
+            <div class="planet jupiter"></div>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">Discover Space</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <h3>Explore Planets</h3>
+                <p>Learn about the fascinating worlds in our solar system with interactive visualizations</p>
+                <a href="{{ url_for('planets') }}" class="feature-link">Explore Now</a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Test Your Knowledge</h3>
+                <p>Challenge yourself with our space quiz and see how much you know about the cosmos</p>
+                <a href="{{ url_for('quiz') }}" class="feature-link">Take Quiz</a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Space Facts</h3>
+                <p>Get amazed by incredible facts about space and the universe</p>
+                <button class="feature-link" id="space-fact-btn">Get Fact</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="space-fact-section">
+    <div class="container">
+        <div class="fact-container" id="fact-container" style="display: none;">
+            <div class="fact-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <p class="space-fact" id="space-fact-text"></p>
+            <button class="btn btn-outline" id="new-fact-btn">Another Fact</button>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Planets</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Star</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Moons</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Wonder</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const spaceFactBtn = document.getElementById('space-fact-btn');
+    const newFactBtn = document.getElementById('new-fact-btn');
+    const factContainer = document.getElementById('fact-container');
+    const factText = document.getElementById('space-fact-text');
+
+    async function getSpaceFact() {
+        try {
+            const response = await fetch('/api/space-fact');
+            const data = await response.json();
+            factText.textContent = data.fact;
+            factContainer.style.display = 'block';
+            factContainer.scrollIntoView({ behavior: 'smooth' });
+        } catch (error) {
+            factText.textContent = 'Failed to load space fact. Try again!';
+            factContainer.style.display = 'block';
+        }
+    }
+
+    spaceFactBtn.addEventListener('click', getSpaceFact);
+    newFactBtn.addEventListener('click', getSpaceFact);
+});
+</script>
+{% endblock %}
